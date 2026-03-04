@@ -6,7 +6,7 @@
 
 
 ## Dataset Content
-* The dataset selected was a stroke prediction dataset from Kaggle.
+* The dataset selected was a stroke prediction dataset from Kaggle. (https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset/data)
 * The dataset was selected as it had a large variety of features to analyse that could impact stroke occurrences and also it was upvoted the most on Kaggle which indicated it was a reliable dataset to use amongst the data science community.
 * The dataset contained the following columns:
     * Id (removed)
