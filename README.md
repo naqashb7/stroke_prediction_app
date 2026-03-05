@@ -15,7 +15,7 @@
     * Hypertension - 1 or 0 dependent on the presence in the patient's life
     * Heart Disease - 1 or 0 dependent on the presence in the patient's life
     * Marital history - If the patient was ever married
-    * Work type - If they are in the private sector, public sector or self-employed
+    * Work type - If they are in the private sector, public sector, self-employed, caring for children or never employed
     * Residence type - If they live in an urban or a rural environment
     * Average Blood glucose level
     * BMI
