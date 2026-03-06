@@ -15,8 +15,8 @@
     * Hypertension - 1 or 0 dependent on the presence in the patient's life
     * Heart Disease - 1 or 0 dependent on the presence in the patient's life
     * Marital history - If the patient was ever married
-    * Work type - If they are in the private sector, public sector, self-employed, caring for children or never employed
-    * Residence type - If they live in an urban or a rural environment
+    * Work type (removed) - If they are in the private sector, public sector, self-employed, caring for children or never employed
+    * Residence type (removed) - If they live in an urban or a rural environment
     * Average Blood glucose level
     * BMI
     * Smoking status - If they smoke, used to smoke or have never smoked
@@ -35,8 +35,6 @@ Business requirements were as follows:
     * BMI
     * Smoking
     * Marital History
-    * Job type
-    * Residence type
 2. Based off historical data, create a model to allow patients to input information and predict stroke occurrence probability
 
 
