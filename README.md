@@ -15,8 +15,8 @@
     * Hypertension - 1 or 0 dependent on the presence in the patient's life
     * Heart Disease - 1 or 0 dependent on the presence in the patient's life
     * Marital history - If the patient was ever married
-    * Work type (removed) - If they are in the private sector, public sector, self-employed, caring for children or never employed
-    * Residence type (removed) - If they live in an urban or a rural environment
+    * Work type - If they are in the private sector, public sector, self-employed, caring for children or never employed
+    * Residence type - If they live in an urban or a rural environment
     * Average Blood glucose level
     * BMI
     * Smoking status - If they smoke, used to smoke or have never smoked
@@ -40,7 +40,26 @@ Business requirements were as follows:
 
 
 ## Hypothesis and how to validate?
-* List here your project hypothesis(es) and how you envision validating it (them) 
+* 1) Age
+    * **H<sub>1</sub>**: As a person's age increases, so will the likelhood of stroke occurrences.
+2) Blood glucose
+    * **H<sub>0</sub>**: As a person's blood glucose levels increase, the likelihood of stroke occurrences will not increase.
+3) Heart Disease
+    * **H<sub>1</sub>**: If a person has heart disease, then they are more likely to have a stroke.
+4) Hypertension
+    * **H<sub>1</sub>**: If a person has hypertension, then they are more likely to have a stroke.
+5) Gender
+    * **H<sub>0</sub>**: Gender has no impact on stroke likelihood.
+6) Smoking history
+    * **H<sub>1</sub>**: Smoking has a direct impact on stroke likelihood.
+7) BMI
+    * **H<sub>1</sub>**: Higher BMI's indicate a higher likelihood of stroke occurrences.
+8) Marital History
+    * **H<sub>0</sub>**: Marriage has no relation to stroke occurrence likelihood.
+9) Job type
+    * **H<sub>0</sub>**: Job type has no relation to stroke occurrence likelihood.
+10) Residence type
+    * **H<sub>0</sub>**: Residence type has no relation to stroke occurrence likelihood.
 
 ## Project Plan
 * Outline the high-level steps taken for the analysis.
