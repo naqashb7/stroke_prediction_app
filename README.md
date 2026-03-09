@@ -1,6 +1,6 @@
 # Stroke Prediction App
 
-**Stroke Prediction app** is an application to help patients understand the likelihood of a stroke occurrence in their life based off a variety of lifestyle factors when entered into the app.
+**Stroke Prediction app** is an application to help patients understand the likelihood of a stroke occurrence in their life based off a variety of lifestyle factors when entered into the app.[Click here to visit the app!](https://stroke-prediction-app-fc9b227f2a45.herokuapp.com/)
 
 # ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
@@ -30,6 +30,7 @@ Business requirements were as follows:
 1. Identify the significance of the following factors on the likelihood of stroke occurrence:
     * Age
     * Gender
+    * Average Blood Glucose Levels
     * Presence of Hypertension
     * Presence of Heart Disease
     * BMI
@@ -40,7 +41,8 @@ Business requirements were as follows:
 
 
 ## Hypothesis and how to validate?
-* 1) Age
+
+1) Age
     * **H<sub>1</sub>**: As a person's age increases, so will the likelhood of stroke occurrences.
 2) Blood glucose
     * **H<sub>0</sub>**: As a person's blood glucose levels increase, the likelihood of stroke occurrences will not increase.
@@ -62,74 +64,80 @@ Business requirements were as follows:
     * **H<sub>0</sub>**: Residence type has no relation to stroke occurrence likelihood.
 
 ## Project Plan
-* Outline the high-level steps taken for the analysis.
-* How was the data managed throughout the collection, processing, analysis and interpretation steps?
-* Why did you choose the research methodologies you used?
+* The steps taken for analysis were as follows:
+    1) ETL pipeline - Clean the raw data and export it to a clean data file
+    2) EDA - visualise the data to determine patterns and connections
+    3) Modelling - Create a new Model dataset and then use a Machine Learning model to predict stroke outcomes
+    4) App - Build Streamlit App and deploy with predictive model
+* A breakdown of the tasks undertaken for the project can be seen [here](https://github.com/users/naqashb7/projects/2/views/1)
+
 
 ## The rationale to map the business requirements to the Data Visualisations
-* List your business requirements and a rationale to map them to the Data Visualisations
+* Business requirements were as follows (alongside the plots used to visualise them):
+1. Identify the significance of the following factors on the likelihood of stroke occurrence:
+    * Age - Violin plot
+    * Gender - Bar chart
+    * Average Blood Glucose Levels - Violin plot & Count Plots
+    * Presence of Hypertension
+    * Presence of Heart Disease
+    * BMI - Violin plot & Count plots
+    * Smoking - Bar chart
+    * Marital History - Count Plots
+2. Based off historical data, create a model to allow patients to input information and predict stroke occurrence probability - the model selected after evaluation was the Logistic Regression Model
 
 ## Analysis techniques used
-* List the data analysis methods used and explain limitations or alternative approaches.
-* How did you structure the data analysis techniques. Justify your response.
-* Did the data limit you, and did you use an alternative approach to meet these challenges?
-* How did you use generative AI tools to help with ideation, design thinking and code optimisation?
+* Data visualisation using Violin plots, Count plots, Bar charts and Correlation Matrices were used to analyse the clean data.
+* Statistical methods such as p-value and T-test were also used alongside Variance, Standard deviation and Coefficient of Variation analyses techniques were used.
+* The Data was split between analysis of Numerical data and then Categorical data. It seemed like the natural split when analysing the data.
+* The dataset was small and not of good quality. This limited me in achieving accurate conclusions from the data (even though it was real-world data). It also impacted the ML model and it predictive capabilities. In fact, the dataset was so poor that, 2 of the 3 ML models, when trained and tested, still could not accurately predict stroke occurrences.
+* I used Claude AI to help with code debugging and project structure planning.
 
 ## Ethical considerations
-* Were there any data privacy, bias or fairness issues with the data?
-* How did you overcome any legal or societal issues?
+* There were no data privacy issues as all data was anonymised.
+* The only issue was the dataset was too small and this did not allow EDA & Modelling to be as accurate as it could have been.
+* A larger dataset with better quality data would have increasd the reliability of the models and allowed for more accurate analysis.
 
 ## Dashboard Design
-* List all dashboard pages and their content, either blocks of information or widgets, like buttons, checkboxes, images, or any other item that your dashboard library supports.
-* Later, during the project development, you may revisit your dashboard plan to update a given feature (for example, at the beginning of the project you were confident you would use a given plot to display an insight but subsequently you used another plot type).
-* How were data insights communicated to technical and non-technical audiences?
-* Explain how the dashboard was designed to communicate complex data insights to different audiences. 
+* The Dashboard was built as a Streamlit App and was structured as follows:
+    1) Introduction - A summary of the project as a whole
+    2) Dataset - A snapshot of the dataset
+    3) Visualisations - Visualisations derived from the dataset
+    4) Model Summary - A summary of the model selection process
+    5) Stroke prediction - A page to help predict stroke outcomes based off user inputs
+* The dashboard caters for both Technical and Non-technical audiences because:
+    * Technical Audiences can understand the model selection criteria and statistical analysis
+    * Non-technical audiences can understand the data used and the visualisations while also being able to use the prediction section
 
-## Unfixed Bugs
-* Please mention unfixed bugs and why they were not fixed. This section should include shortcomings of the frameworks or technologies used. Although time can be a significant variable to consider, paucity of time and difficulty understanding implementation are not valid reasons to leave bugs unfixed.
-* Did you recognise gaps in your knowledge, and how did you address them?
-* If applicable, include evidence of feedback received (from peers or instructors) and how it improved your approach or understanding.
 
 ## Development Roadmap
-* What challenges did you face, and what strategies were used to overcome these challenges?
-* What new skills or tools do you plan to learn next based on your project experience? 
+* It was difficult as the ML Pipeline and Streamlit App were both new but by using online research and Claude AI to guide me I was able to build a successful model and an app with Predictive capabilities.
+* The Dataset also made it difficult as I am a perfectionist and so would want to build a perfect model but the dataset helped teach me that in the real-world no dataset will be perfect and so evaluation of the data is important and then learning how to deal with data going forward.
+* I think going forward I will be able to create the app and ML pipeline more smoothly now that I have done it once.
 
 ## Deployment
 ### Heroku
 
-* The App live link is: https://YOUR_APP_NAME.herokuapp.com/ 
-* Set the runtime.txt Python version to a [Heroku-20](https://devcenter.heroku.com/articles/python-support#supported-runtimes) stack currently supported version.
-* The project was deployed to Heroku using the following steps.
-
-1. Log in to Heroku and create an App
-2. From the Deploy tab, select GitHub as the deployment method.
-3. Select your repository name and click Search. Once it is found, click Connect.
-4. Select the branch you want to deploy, then click Deploy Branch.
-5. The deployment process should happen smoothly if all deployment files are fully functional. Click now the button Open App on the top of the page to access your App.
-6. If the slug size is too large then add large files not required for the app to the .slugignore file.
+* Heroku was used to deploy the app.
+* Initially there was an issue and the app wouldn't deploy.
+* It was determined that libraries that weren't needed had to be removed from the requirements.txt file and the app path had to be defined in the Procfile.
 
 
 ## Main Data Analysis Libraries
-* Here you should list the libraries you used in the project and provide an example(s) of how you used these libraries.
+
+The following Python libraries were used, alongside which section of the project they were utilised in:
+
+* Pandas - ETL, EDA, Modelling, App
+* Matplotlib - EDA, App
+* Seaborn - EDA, App
+* Plotly - App
+* Scipy - Modelling
+* Scikitlearn - Modelling, App
+* Imbalanced Learn - Modelling
+* Streamlit - App
 
 
 ## Credits 
 
-* In this section, you need to reference where you got your content, media and extra help from. It is common practice to use code from other repositories and tutorials, however, it is important to be very specific about these sources to avoid plagiarism. 
-* You can break the credits section up into Content and Media, depending on what you have included in your project. 
-
-### Content 
-
-- The text for the Home page was taken from Wikipedia Article A
-- Instructions on how to implement form validation on the Sign-Up page was taken from [Specific YouTube Tutorial](https://www.youtube.com/)
-- The icons in the footer were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The photos used on the home and sign-up page are from This Open-Source site
-- The images used for the gallery page were taken from this other open-source site
+* Kaggle for the dataset
 
 
-
-## Acknowledgements (optional)
-* Thank the people who provided support through this project.
