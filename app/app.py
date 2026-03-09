@@ -11,7 +11,7 @@ st.set_page_config(
 st.sidebar.title("🧠 Stroke Prediction App")
 st.sidebar.markdown("---")
 st.sidebar.markdown("### About")
-st.sidebar.markdown("This app predicts stroke likelihood based on patient health data.")
+st.sidebar.markdown("This app predicts stroke likelihood based off of historic health data. Explore the navigation menu above to learn more! \n\n**DISCLAIMER:** The predictions made from this app are purely theoretical. Do not accept it as official medical advice. If you have any concerns about your health, seek help from a medical professional immediately!")
 
 BASE_DIR = os.getcwd()  
 

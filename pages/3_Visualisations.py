@@ -11,7 +11,6 @@ st.sidebar.title("🔽 Filter Data")
 
 df = pd.read_csv("data_files/ModellingData/stroke_data_modelling.csv")
 
-# Sidebar filters
 st.sidebar.header("Filter the data and display it on the visualisations")
 
 gender_filter = st.sidebar.multiselect(
@@ -46,22 +45,26 @@ heart_disease_filter = st.sidebar.multiselect(
     default=[0, 1],
     format_func=lambda x: "Yes" if x == 1 else "No"
 )
-# Apply filters
+
 filtered_df = df[
     (df["gender"].isin(gender_filter)) &
     (df["age"].between(age_filter[0], age_filter[1])) &
     (df["stroke"].isin(stroke_filter)) &
-    (df["hypertension"].isin(hypertension_filter)) &      # ← add this
-    (df["heart_disease"].isin(heart_disease_filter))      # ← add this
+    (df["hypertension"].isin(hypertension_filter)) &      
+    (df["heart_disease"].isin(heart_disease_filter))      
 ]
 
 st.title("📈 Visualisations")
 st.write(f"Showing {len(filtered_df)} records")
-
+st.info(""" Use the Filters on the left to see how the data changes when changing variable output""")
 st.markdown("---")
 
-# Plotly interactive chart
 st.subheader("🔍 Interactive: Age vs Average Glucose Level by Stroke")
+st.info("""Play around with the chart below to see how Age and Average blood Glucose levels can affect stroke likelihood!
+The White dots represent stroke cases while the Blue dots represent no stroke cases.
+\n\n The Analysis shows:
+    - As Age increases, Stroke cases increase""")
+
 fig = px.scatter(
     filtered_df,
     x="age",
@@ -74,39 +77,39 @@ fig = px.scatter(
 )
 st.plotly_chart(fig, use_container_width=True)
 
+
+
+
 st.markdown("---")
 
-# Age distribution violin plot
-st.subheader("Age Distribution by Stroke")
+
+st.subheader("Age vs Stroke")
 fig1, ax1 = plt.subplots(figsize=(8, 5))
 sns.violinplot(data=filtered_df, x="stroke", y="age", palette="Set2", inner="quartile", ax=ax1)
 ax1.set_xticklabels(["No Stroke", "Stroke"])
-ax1.set_title("Age Distribution by Stroke Occurrence")
+ax1.set_title("Age vs Stroke Occurrence")
 st.pyplot(fig1)
-
+st.info("In the above figure we can see that as age of person increases then the likelihood of stroke occurrence also increases.")
 st.markdown("---")
 
-# Glucose distribution
+
 st.subheader("Average Glucose Level by Stroke")
 fig2, ax2 = plt.subplots(figsize=(8, 5))
 sns.violinplot(data=filtered_df, x="stroke", y="avg_glucose_level", palette="Set2", inner="quartile", ax=ax2)
 ax2.set_xticklabels(["No Stroke", "Stroke"])
 ax2.set_title("Glucose Level Distribution by Stroke Occurrence")
 st.pyplot(fig2)
-
+st.info(""" 
+- The initial violinplot for this data indicated that there was a significantly higher amount of individuals with stroke history when average blood glucose levels were high. This required further analysis as there were two nodes on this plot, one on the lower half of the plot and one on the upper half of the plot.
+- The plot was split by both nodes at the 150mg/dl point.
+- After assessing the proportional differences of both plots, it was possible to see that the upper half of the plot indicated that stroke was 3x more likely in individuals with an average blood glucose higher than 150mg/dl.
+- Further statistical analysis indicated that there was a large difference between the groups of both nodes and the difference between both was statistically significant and so the results could not be attributed to chance.""")
 st.markdown("---")
 
-# Correlation heatmap
-st.markdown("---")
-st.subheader("Correlation Heatmaps")
 
-col1, col2 = st.columns(2)
-
-st.markdown("---")
 st.subheader("📊 Clinical & Numerical Analysis")
 
-# --- Bar Charts ---
-st.markdown("#### Stroke Rate by Clinical Features")
+
 col1, col2 = st.columns(2)
 
 with col1:
@@ -117,7 +120,9 @@ with col1:
     ax4.set_ylabel("Stroke Rate (%)")
     ax4.set_title("Stroke Rate by Hypertension")
     st.pyplot(fig4)
-
+st.info("""
+- Upon analysis, those with hypertension history had a 10% higher chance of having a stroke occurrence in their medical history.
+- The data showed that a person with heart disease was shown to be 13% more likely to have a stroke """)
 with col2:
     fig5, ax5 = plt.subplots(figsize=(6, 5))
     hd_summary = filtered_df.groupby("heart_disease")["stroke"].mean() * 100
@@ -129,7 +134,7 @@ with col2:
 
 st.markdown("---")
 
-# --- Count Plots ---
+
 st.markdown("#### Hypertension & Heart Disease vs Stroke")
 col3, col4 = st.columns(2)
 
@@ -153,29 +158,9 @@ with col4:
 
 st.markdown("---")
 
-# --- Box Plots ---
-st.markdown("#### Age & BMI Distribution by Stroke")
-col5, col6 = st.columns(2)
 
-with col5:
-    fig8, ax8 = plt.subplots(figsize=(6, 5))
-    sns.boxplot(data=filtered_df, x="stroke", y="age", palette="Set2", ax=ax8, order=[0, 1])
-    ax8.set_xticks([0, 1])
-    ax8.set_xticklabels(["No Stroke", "Stroke"])
-    ax8.set_title("Age Distribution by Stroke")
-    st.pyplot(fig8)
 
-with col6:
-    fig9, ax9 = plt.subplots(figsize=(6, 5))
-    sns.boxplot(data=filtered_df, x="stroke", y="bmi", palette="Set2", ax=ax9, order=[0, 1])
-    ax9.set_xticks([0, 1])
-    ax9.set_xticklabels(["No Stroke", "Stroke"])
-    ax9.set_title("BMI Distribution by Stroke")
-    st.pyplot(fig9)
 
-st.markdown("---")
-
-# --- Scatter Plot ---
 st.markdown("#### BMI vs Glucose by Stroke")
 fig10 = px.scatter(
     filtered_df,
@@ -186,4 +171,5 @@ fig10 = px.scatter(
     labels={"bmi": "BMI", "avg_glucose_level": "Avg Glucose Level", "stroke": "Stroke"},
     title="BMI vs Average Glucose Level by Stroke"
 )
+st.info("""  This dataset shows an almost even spread of BMI's amongst those individuals who experienced stroke vs those who did not.""")
 st.plotly_chart(fig10, use_container_width=True)

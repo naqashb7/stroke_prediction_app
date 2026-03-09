@@ -69,9 +69,9 @@ if st.button("Predict Stroke Risk"):
 
     if prediction == 1:
         st.error(f"⚠️ High Stroke Risk Detected — Probability: {probability:.1%}")
-        st.markdown("Please consult a medical professional as soon as possible.")
+        st.markdown("Your stroke risk is elevated. Please consider consulting a medical professional as soon as possible.")
     else:
         st.success(f"✅ Low Stroke Risk — Probability: {probability:.1%}")
-        st.markdown("Continue maintaining a healthy lifestyle.")
+        st.markdown("You are currently safe from stroke risk.")
 
-    st.info("⚠️ This tool is for educational purposes only and should not replace professional medical advice.")
+    st.warning("⚠️ This is not official medical advice and should not replace professional medical advice. If you have any concerns about your health, please seek medical attention")
