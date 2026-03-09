@@ -113,6 +113,8 @@ Business requirements were as follows:
 * It was difficult as the ML Pipeline and Streamlit App were both new but by using online research and Claude AI to guide me I was able to build a successful model and an app with Predictive capabilities.
 * The Dataset also made it difficult as I am a perfectionist and so would want to build a perfect model but the dataset helped teach me that in the real-world no dataset will be perfect and so evaluation of the data is important and then learning how to deal with data going forward.
 * I think going forward I will be able to create the app and ML pipeline more smoothly now that I have done it once.
+* I also think, going forward, I would use a larger dataset and possibly from a different source (potentially NHS). This may give more definitive results and help shape the ML model better.
+* I also think in the future I would play around with model hyperparameters to better train the model and see which hyperparameters have a stronger impact on the model performance.
 
 ## Deployment
 ### Heroku
